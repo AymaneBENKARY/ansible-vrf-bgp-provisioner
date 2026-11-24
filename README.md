@@ -20,12 +20,12 @@ ansible-vrf-bgp-resource-modules/
 │   └── hosts.yml
 ├── host_vars/
 │   └── Edge.yml
-├── provision_vrf_bgp.yml    # The playbook
+├── provision_vrf_bgp.yml          # Main playbook using cisco.ios resource
 ├── conatinerlab_topology
-│   ├── lab.clab.yml         # The conatinerlab topology
-│   └── topology_diagram.png
+│   ├── lab.clab.yml               # The conatinerlab topology
+│   └── topology_diagram.png       # Lab diagram showing Edge + customer VRFs
 └── sample_outputs/
-    └── playbook_run_sample.txt
+    └── playbook_run_sample.txt    # Output of initial push and idempotent re-run
 ```
 
 ## Quickstart & Usage
