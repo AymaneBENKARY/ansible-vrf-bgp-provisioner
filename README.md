@@ -1,4 +1,4 @@
-# Zero-Touch VRF & BGP Provisioning (Ansible Resource Modules)
+# Zero-Touch VRF & BGP Provisioning
 
 A declarative, idempotent network automation workflow for provisioning customer VRFs, VRF-bound interfaces, and VRF-aware eBGP peering on Cisco IOS/vIOS routers using **Ansible** and **`cisco.ios` resource modules**.
 
