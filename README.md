@@ -53,9 +53,8 @@ ansible-playbook provision_vrf_bgp.yml --check --diff -v
 ```
 
 ## Sample Output
-```text
-You can see the generated output when running the playbook saved at `sample_outputs/playbook_run_sample.txt`
-```
+
+You can see the generated output when running the playbook saved at `sample_outputs/playbook_run_sample.txt`.
 
 ## Tech Stack
 * **Automation:** Ansible, `cisco.ios` Resource Modules (`ios_vrf`, `ios_interfaces`, `ios_l3_interfaces`, `ios_bgp_address_family`)
