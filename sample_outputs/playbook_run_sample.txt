@@ -1,0 +1,51 @@
+
+================================================================================
+STEP 1: LIVE PROVISIONING RUN (ansible-playbook provision_vrf_bgp.yml)
+================================================================================
+
+PLAY [Provision Customer VRFs, Interfaces, and BGP Using Resource Modules] *****
+
+TASK [Configure VRFs] **********************************************************
+changed: [Edge] => (item={'name': 'CUST_A', 'rd': '65001:100', 'route_targets': {'export': ['65001:100'], 'import': ['65001:100']}, 'interface': 'GigabitEthernet0/2', 'ip_address': '10.0.1.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.1.2', 'remote_asn': 65002})
+changed: [Edge] => (item={'name': 'CUST_B', 'rd': '65001:200', 'route_targets': {'export': ['65001:200'], 'import': ['65001:200']}, 'interface': 'GigabitEthernet0/3', 'ip_address': '10.0.2.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.2.2', 'remote_asn': 65003})
+
+TASK [Ensure interfaces are enabled (no shutdown)] *****************************
+changed: [Edge] => (item={'name': 'CUST_A', 'rd': '65001:100', 'route_targets': {'export': ['65001:100'], 'import': ['65001:100']}, 'interface': 'GigabitEthernet0/2', 'ip_address': '10.0.1.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.1.2', 'remote_asn': 65002})
+changed: [Edge] => (item={'name': 'CUST_B', 'rd': '65001:200', 'route_targets': {'export': ['65001:200'], 'import': ['65001:200']}, 'interface': 'GigabitEthernet0/3', 'ip_address': '10.0.2.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.2.2', 'remote_asn': 65003})
+
+TASK [Configure IPv4 addresses on customer interfaces] *************************
+changed: [Edge] => (item={'name': 'CUST_A', 'rd': '65001:100', 'route_targets': {'export': ['65001:100'], 'import': ['65001:100']}, 'interface': 'GigabitEthernet0/2', 'ip_address': '10.0.1.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.1.2', 'remote_asn': 65002})
+changed: [Edge] => (item={'name': 'CUST_B', 'rd': '65001:200', 'route_targets': {'export': ['65001:200'], 'import': ['65001:200']}, 'interface': 'GigabitEthernet0/3', 'ip_address': '10.0.2.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.2.2', 'remote_asn': 65003})
+
+TASK [Configure BGP VRF address-family neighbors] ******************************
+changed: [Edge] => (item={'name': 'CUST_A', 'rd': '65001:100', 'route_targets': {'export': ['65001:100'], 'import': ['65001:100']}, 'interface': 'GigabitEthernet0/2', 'ip_address': '10.0.1.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.1.2', 'remote_asn': 65002})
+changed: [Edge] => (item={'name': 'CUST_B', 'rd': '65001:200', 'route_targets': {'export': ['65001:200'], 'import': ['65001:200']}, 'interface': 'GigabitEthernet0/3', 'ip_address': '10.0.2.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.2.2', 'remote_asn': 65003})
+
+PLAY RECAP *********************************************************************
+Edge                       : ok=4    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+================================================================================
+STEP 2: IDEMPOTENCY CHECK (ansible-playbook playbooks/provision_vrf_bgp.yml --check --diff)
+================================================================================
+
+PLAY [Provision Customer VRFs, Interfaces, and BGP Using Resource Modules] *****
+
+TASK [Configure VRFs] **********************************************************
+ok: [Edge] => (item={'name': 'CUST_A', 'rd': '65001:100', 'route_targets': {'export': ['65001:100'], 'import': ['65001:100']}, 'interface': 'GigabitEthernet0/2', 'ip_address': '10.0.1.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.1.2', 'remote_asn': 65002})
+ok: [Edge] => (item={'name': 'CUST_B', 'rd': '65001:200', 'route_targets': {'export': ['65001:200'], 'import': ['65001:200']}, 'interface': 'GigabitEthernet0/3', 'ip_address': '10.0.2.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.2.2', 'remote_asn': 65003})
+
+TASK [Ensure interfaces are enabled (no shutdown)] *****************************
+ok: [Edge] => (item={'name': 'CUST_A', 'rd': '65001:100', 'route_targets': {'export': ['65001:100'], 'import': ['65001:100']}, 'interface': 'GigabitEthernet0/2', 'ip_address': '10.0.1.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.1.2', 'remote_asn': 65002})
+ok: [Edge] => (item={'name': 'CUST_B', 'rd': '65001:200', 'route_targets': {'export': ['65001:200'], 'import': ['65001:200']}, 'interface': 'GigabitEthernet0/3', 'ip_address': '10.0.2.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.2.2', 'remote_asn': 65003})
+
+TASK [Configure IPv4 addresses on customer interfaces] *************************
+changed: [Edge] => (item={'name': 'CUST_A', 'rd': '65001:100', 'route_targets': {'export': ['65001:100'], 'import': ['65001:100']}, 'interface': 'GigabitEthernet0/2', 'ip_address': '10.0.1.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.1.2', 'remote_asn': 65002})
+changed: [Edge] => (item={'name': 'CUST_B', 'rd': '65001:200', 'route_targets': {'export': ['65001:200'], 'import': ['65001:200']}, 'interface': 'GigabitEthernet0/3', 'ip_address': '10.0.2.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.2.2', 'remote_asn': 65003})
+
+TASK [Configure BGP VRF address-family neighbors] ******************************
+ok: [Edge] => (item={'name': 'CUST_A', 'rd': '65001:100', 'route_targets': {'export': ['65001:100'], 'import': ['65001:100']}, 'interface': 'GigabitEthernet0/2', 'ip_address': '10.0.1.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.1.2', 'remote_asn': 65002})
+ok: [Edge] => (item={'name': 'CUST_B', 'rd': '65001:200', 'route_targets': {'export': ['65001:200'], 'import': ['65001:200']}, 'interface': 'GigabitEthernet0/3', 'ip_address': '10.0.2.1', 'subnet_mask': '255.255.255.252', 'neighbor_ip': '10.0.2.2', 'remote_asn': 65003})
+
+PLAY RECAP *********************************************************************
+Edge                       : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,28 @@
+bgp_local_asn: 65001
+
+vrfs:
+  - name: CUST_A
+    rd: "65001:100"
+    route_targets:
+      export:
+        - "65001:100"
+      import:
+        - "65001:100"
+    interface: GigabitEthernet0/2
+    ip_address: 10.0.1.1 # Edge router's IP address for CUST_A
+    subnet_mask: 255.255.255.252
+    neighbor_ip: 10.0.1.2 # Edge router's neighbor IP address for CUST_A
+    remote_asn: 65002
+
+  - name: CUST_B
+    rd: "65001:200"
+    route_targets:
+      export:
+        - "65001:200"
+      import:
+        - "65001:200"
+    interface: GigabitEthernet0/3
+    ip_address: 10.0.2.1 # Edge router's IP address for CUST_B
+    subnet_mask: 255.255.255.252
+    neighbor_ip: 10.0.2.2 # Edge router's neighbor IP address for CUST_B
+    remote_asn: 65003

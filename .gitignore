@@ -1,0 +1,4 @@
+# Ansible runtime artifacts & logs
+*.retry
+ansible.log
+*.log

@@ -1,0 +1,23 @@
+name: ISP-topology
+
+topology:
+  nodes:
+    Core:
+      kind: cisco_vios
+      image: vrnetlab/cisco_vios:157-3.M3
+    Edge:
+      kind: cisco_vios
+      image: vrnetlab/cisco_vios:157-3.M3
+    CE1: # Customer Edge 1
+      kind: cisco_vios
+      image: vrnetlab/cisco_vios:157-3.M3
+    CE2: # Customer Edge 2
+      kind: cisco_vios
+      image: vrnetlab/cisco_vios:157-3.M3
+
+  links:
+    [
+      { endpoints: ["Core:Gi0", "Edge:Gi0"] },
+      { endpoints: ["Edge:Gi1", "CE1:Gi0"] },
+      { endpoints: ["Edge:Gi2", "CE2:Gi0"] },
+    ]
